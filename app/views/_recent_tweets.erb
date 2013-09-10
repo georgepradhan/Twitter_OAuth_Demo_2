@@ -1,0 +1,11 @@
+  <% if @tweets %>
+    <p> The 10 most recent tweets for <%="@"+@user.username%> are: </p>
+    <ol>
+      <% @tweets.each do |tweet| %>
+        <li>
+          <span class="tweet_text"><%=tweet.text%></span><br><span class="tweet_time"><%=tweet.tweet_time.strftime('%e-%b-%Y, %H:%M')%></span>
+        </li>
+          <br>
+      <% end %>
+    </ol>
+  <% end %>
