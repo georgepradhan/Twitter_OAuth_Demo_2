@@ -49,6 +49,13 @@ $(document).ready(function() {
     }).fail(function(){console.log('send tweet fail');
     });
 
+    // btw, you can totally put a method here that
+    // will execute BEFORE the ajax call above is done.
+    // since it's asynchronous, you can (for example)
+    // choose to disable the form fields *here*.
+    // if you disable them before the ajax call, or
+    // in the done callback, your tweet won't get sent!
+
   });
 
 });
