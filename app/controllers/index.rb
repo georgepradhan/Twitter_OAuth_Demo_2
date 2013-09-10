@@ -15,6 +15,8 @@ get '/:username' do
   end
 
   @tweets = @user.tweets.limit(10)
-  erb :index
+  erb :_recent_tweets, layout: false # cuz i'm going to use this in ajax
+
 end
+
 
