@@ -1,15 +1,27 @@
 <div class="container">
   <h1>Welcome to LLorge's twitter client!</h1>
-  <p>Please enter a twitter username below:</p>
+
+  <h3>Please enter a twitter username below:</h3>
 
   <form id="get_tweets" action="/" method="GET">
-    <input type="text" name="username">
+    <input type="text" name="username" placeholder="e.g. justinbieber">
     <input type="submit" value="Get their tweets!">
   </form>
 
   <img id="spinner" src="ajax-loader.gif" style="display: none"/>
 
-<div id="recent_tweets">
-</div>
+  <div id="recent_tweets">
+  </div>
+
+  <h3>Please type your message to tweet below:</h3>
+  <p style="color: gray">(Limit 140 characters)</p>
+
+  <form id="send_tweet" action="/tweets" method="POST">
+    <input type="text" name="user_tweet" placeholder="Your tweet here..." maxlength="140">
+    <input type="submit" value="Send a tweet!">
+  </form>
+
+  <div id="messages">
+  </div>
 
 </div>
