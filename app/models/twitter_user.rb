@@ -18,10 +18,12 @@ class TwitterUser < ActiveRecord::Base
 
 
   def fetch_tweets!
-    tweets = Twitter.user_timeline(self.username).select{|tweet| tweet.created_at > last_tweet_time}
-      tweets.each do |tweet_obj|
-        self.tweets.create(text: tweet_obj.text, tweet_time: tweet_obj.created_at)
-      end
+    tweets = Twitter.user_timeline(self.username)
+    recent_tweets = tweets.select{|tweet| tweet.created_at > last_tweet_time}
+
+    recent_tweets.each do |tweet_obj|
+      self.tweets.create(text: tweet_obj.text, tweet_time: tweet_obj.created_at)
+    end
   end
 
   def tweets_stale?
