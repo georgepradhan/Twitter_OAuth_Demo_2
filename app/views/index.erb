@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Welcome to LLorge's twitter client!</h1>
+  <p>Please enter a twitter username below:</p>
+
+  <form action="/" method="GET">
+    <input type="text" name="username">
+    <input type="submit" value="Get their tweets!">
+  </form>
+
+  <% if @tweets %>
+    <p> The 10 most recent tweets for <%=@user%> are: </p>
+    <ol>
+      <% @tweets.each do |tweet| %>
+        <li>
+          <span class="tweet_text"><%=tweet.text%></span><br><span class="tweet_time"><%=tweet.tweet_time.strftime('%e-%b-%Y, %H:%M')%></span>
+        </li>
+          <br>
+      <% end %>
+    </ol>
+  <% end %>
+
+</div>
