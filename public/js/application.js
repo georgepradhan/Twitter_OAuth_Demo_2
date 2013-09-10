@@ -1,7 +1,28 @@
-$(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+function toggleSpinner(){
+  $('#spinner').toggle();
+}
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+$( document ).ajaxStart(function() {
+  toggleSpinner();
+});
+
+$( document ).ajaxStop(function() {
+  toggleSpinner();
+});
+
+
+$(document).ready(function() {
+  $('#get_tweets').on('submit', function(e){
+    e.preventDefault();
+
+    var params = $(this).serialize();
+    $.ajax({
+      type: "GET",
+      url:"/",
+      data: params
+    }).done(function(server_response){
+      $('#recent_tweets').html(server_response);
+    }).fail(function(){console.log('wah wah');
+  });
+});
 });
