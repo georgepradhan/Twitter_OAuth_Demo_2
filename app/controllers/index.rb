@@ -1,6 +1,7 @@
 get '/' do
-  params[:username] ? redirect "/#{params[:username]}" : erb :index
+  params[:username] ? redirect("/#{params[:username]}") : erb(:index)
 end
+
 
 get '/:username' do
   unless TwitterUser.find_by_username(params[:username])
